@@ -138,7 +138,7 @@ function setup() {
   difficulty = Number(localStorage.getItem("difficulty"));
   gameMode = localStorage.getItem("gameMode");
 
-  fruits = [generatePosition(), generatePosition(), generatePosition()]; // [r, c]
+  fruits = [generatePosition(), generatePosition(), generatePosition(19)]; // [r, c]
   snake = [generatePosition()];
 
   resetPoints();
@@ -288,7 +288,7 @@ function eatFruit(index) {
     resetTimer();
   }
 
-  fruits[index] = generatePosition();
+  fruits[index] = generatePosition(index === 2 ? 19 : 20);
   increasePoints(difficulty);
 
   // TODO

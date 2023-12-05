@@ -2,9 +2,9 @@ function getIndex(r, c) {
   return 20 * r + 1 * c;
 }
 
-function generatePosition() {
-  let r = Math.floor(Math.random() * 20);
-  let c = Math.floor(Math.random() * 20);
+function generatePosition(limit = 20) {
+  let r = Math.floor(Math.random() * limit);
+  let c = Math.floor(Math.random() * limit);
   return [r, c];
 }
 
