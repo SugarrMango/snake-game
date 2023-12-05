@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="/layout.css" />
+    <link rel="stylesheet" href="difficulty.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Choose difficulty</h1>
+    </header>
+    <main>
+      <header class="tabs">
+        <div class="tab tab-classic">Classic</div>
+        <div class="tab tab-survival">Survival</div>
+      </header>
+      <div class="content">
+        <input
+          type="range"
+          id="difficulty"
+          name="difficulty"
+          min="1"
+          max="5"
+          list="difficulties"
+        />
+        <datalist id="difficulties"></datalist>
+        <span class="difficulty-name"></span>
+        <span class="difficulty-description"></span>
+      </div>
+      <nav>
+        <a href="/pages/menu/" class="button">Back</a>
+        <a href="/pages/game/" class="button">Start</a>
+      </nav>
+    </main>
+    <script src="difficulty.js"></script>
+  </body>
+</html>

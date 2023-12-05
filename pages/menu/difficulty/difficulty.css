@@ -1,0 +1,137 @@
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  width: 200px;
+  padding: 16px;
+  border: 2px solid #45372b;
+}
+
+.tab[active="true"],
+.tab:hover {
+  background-color: #967950;
+  color: #e8e8e8;
+}
+
+.tab:hover {
+  cursor: pointer;
+}
+
+label {
+  font-size: 60px;
+  color: #45372b;
+  /* color: #7d6139; */
+  letter-spacing: -2px;
+  /* color: #6b4b48; */
+  -webkit-text-stroke-color: #96887e;
+  -webkit-text-stroke-width: 2px;
+  font-weight: bolder;
+  font-family: "Rubik", sans-serif;
+}
+
+input[type="range"] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 400px;
+  background: transparent;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 36px;
+  width: 8px;
+  border-radius: 3px;
+  background: #7d6139;
+  cursor: pointer;
+  margin-top: -12px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 18px;
+  cursor: pointer;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  background: linear-gradient(
+    90deg,
+    rgba(3, 255, 0, 1) 0%,
+    rgba(255, 0, 0, 1) 100%
+  );
+  border-radius: 8px;
+  border: 2px solid #010101;
+}
+
+datalist {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  margin-top: -23px;
+  padding-top: 0px;
+}
+
+option {
+  color: #45372b;
+  display: flex;
+  justify-content: center;
+  /* height: 42px; */
+  align-items: end;
+  background: transparent;
+  background-position-y: -15px;
+  background-position-x: center;
+  z-index: -1;
+}
+
+.difficulty-name {
+  font-size: 60px;
+  color: #45372b;
+  -webkit-text-stroke-color: #96887e;
+  -webkit-text-stroke-width: 2px;
+  font-weight: bolder;
+  font-family: "Rubik", sans-serif;
+}
+
+.difficulty-description {
+  display: block;
+  max-width: 500px;
+  height: 200px;
+  font-size: 32px;
+  text-align: center;
+  color: #45372b;
+  -webkit-text-stroke-color: #96887e;
+  -webkit-text-stroke-width: 2px;
+  font-weight: bolder;
+  font-family: "Rubik", sans-serif;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  gap: 20px;
+}
+
+nav > .button {
+  flex: 1;
+  min-width: 300px;
+}

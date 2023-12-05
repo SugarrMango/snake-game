@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snake Game</title>
+    <link rel="stylesheet" href="/layout.css" />
+    <link rel="stylesheet" href="menu.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Snake game</h1>
+    </header>
+    <main>
+      <a href="/pages/menu/difficulty" class="button">Play</a>
+      <a href="/pages/leaderboard" class="button">Leaderboard</a>
+      <a href="/pages/rules" class="button">Rules</a>
+      <a href="/" class="button quit">Quit</a>
+    </main>
+    <script>
+      const quitButton = document.querySelector(".quit");
+      quitButton.addEventListener("click", () => {
+        window.close(``, `_parent`, ``);
+      });
+    </script>
+  </body>
+</html>

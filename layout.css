@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap");
+
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  padding: 20px;
+  min-height: 100vh;
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-image: url("assets/cloud2.png");
+  background-size: cover;
+  box-sizing: border-box;
+}
+
+header {
+  text-align: center;
+}
+
+h1 {
+  color: #45372b;
+  -webkit-text-stroke-color: #faf1d9;
+  -webkit-text-stroke-width: 1px;
+  font-size: 80px;
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: -4px;
+}
+
+.button {
+  min-width: 450px;
+  padding: 20px 40px;
+  font-size: 48px;
+  text-align: center;
+  background-color: #967950;
+  border: 4px solid #45372b;
+  border-radius: 16px;
+  color: #e8e8e8;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Rubik", sans-serif;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45372b;
+  border-color: #967950;
+  box-shadow: rgb(150, 121, 80) 0 0 30px 10px;
+}
