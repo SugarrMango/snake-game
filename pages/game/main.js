@@ -138,8 +138,12 @@ function setup() {
   difficulty = Number(localStorage.getItem("difficulty"));
   gameMode = localStorage.getItem("gameMode");
 
-  fruits = [generatePosition(), generatePosition(), generatePosition(19)]; // [r, c]
   snake = [generatePosition()];
+  fruits = [null, null, null];
+
+  for (let i = 0; i < 3; i++) {
+    regenerateFruit(i);
+  }
 
   resetPoints();
   repaint();
@@ -283,18 +287,45 @@ function lose() {
   loseMenuElement.style.display = "flex";
 }
 
+function isInsideFruit(position, index, fruit) {
+  if (position === null) {
+    return false;
+  }
+  let result = false;
+  if (index === 2) {
+    const [x, y] = fruit;
+    // x ||= y -> x = x || y -> x = x or y
+    result ||= arePositionsEqual(position, [x, y]);
+    result ||= arePositionsEqual(position, [x, y + 1]);
+    result ||= arePositionsEqual(position, [x + 1, y]);
+    result ||= arePositionsEqual(position, [x + 1, y + 1]);
+  } else {
+    result = arePositionsEqual(position, fruit);
+  }
+  return result;
+}
+
+function regenerateFruit(index) {
+  fruits[index] = null;
+  let newPosition = generatePosition(index === 2 ? 19 : 20);
+
+  while (
+    snake.some((x) => isInsideFruit(x, index, newPosition)) ||
+    fruits.some((x) => isInsideFruit(x, index, newPosition))
+  ) {
+    newPosition = generatePosition(index === 2 ? 19 : 20);
+  }
+
+  fruits[index] = newPosition;
+}
+
 function eatFruit(index) {
   if (gameMode === "survival") {
     resetTimer();
   }
 
-  fruits[index] = generatePosition(index === 2 ? 19 : 20);
   increasePoints(difficulty);
-
-  // TODO
-  while (snake.some((x) => arePositionsEqual(x, fruits[index]))) {
-    fruits[index] = generatePosition();
-  }
+  regenerateFruit(index);
 }
 
 function move() {
@@ -319,18 +350,7 @@ function move() {
   */
 
   for (let [index, fruit] of fruits.entries()) {
-    let isFruitEaten = false;
-
-    if (index === 2) {
-      const [x, y] = fruit;
-      // x ||= y -> x = x || y -> x = x or y
-      isFruitEaten ||= arePositionsEqual(newPosition, [x, y]);
-      isFruitEaten ||= arePositionsEqual(newPosition, [x, y + 1]);
-      isFruitEaten ||= arePositionsEqual(newPosition, [x + 1, y]);
-      isFruitEaten ||= arePositionsEqual(newPosition, [x + 1, y + 1]);
-    } else {
-      isFruitEaten = arePositionsEqual(newPosition, fruit);
-    }
+    let isFruitEaten = isInsideFruit(newPosition, index, fruit);
 
     if (isFruitEaten) {
       isEatingAFruit = true;
