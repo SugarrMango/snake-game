@@ -24,4 +24,4 @@
 
 # Homework
 
-Look for some cool snake skins
+Make a counter for how many regular fruits you have eaten in-game (strawberry or grape)
