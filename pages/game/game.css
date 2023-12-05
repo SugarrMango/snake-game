@@ -10,6 +10,7 @@ main {
 }
 
 .board {
+  position: relative;
   width: 800px;
   height: 800px;
   border: 10px solid #b39364;
@@ -94,6 +95,12 @@ main {
 
 .fruit-2 {
   background-image: url("/assets/mango.png");
+}
+
+.mango-container {
+  position: absolute;
+  width: 80px;
+  height: 80px;
 }
 
 .timer {

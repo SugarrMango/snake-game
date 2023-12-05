@@ -6,12 +6,14 @@ let loseMenuElement = document.querySelector(".lose-modal");
 let retryButton = document.querySelector(".retry");
 let statsText = document.querySelector(".lose-modal .stats");
 
+let mangoContainerElement = document.querySelector(".mango-container");
+
 function setupScene() {
   // for i in range(400):
   for (let i = 0; i < 400; i += 1) {
     let cell = document.createElement("div");
     cell.className = "cell default";
-    board.appendChild(cell);
+    board.prepend(cell);
   }
 
   resumeButton.addEventListener("click", resumeGame);
@@ -105,7 +107,15 @@ function repaint() {
   for (let [index, fruit] of fruits.entries()) {
     // fruit-0 or fruit-1
     // fruit-index
-    changeType(fruit, FRUIT_TYPE, `${FRUIT_TYPE}-${index}`);
+
+    if (index === 2) {
+      let [x, y] = fruit;
+
+      mangoContainerElement.style.top = `${x * 40}px`;
+      mangoContainerElement.style.left = `${y * 40}px`;
+    } else {
+      changeType(fruit, FRUIT_TYPE, `${FRUIT_TYPE}-${index}`);
+    }
   }
 }
 
@@ -309,7 +319,20 @@ function move() {
   */
 
   for (let [index, fruit] of fruits.entries()) {
-    if (arePositionsEqual(newPosition, fruit)) {
+    let isFruitEaten = false;
+
+    if (index === 2) {
+      const [x, y] = fruit;
+      // x ||= y -> x = x || y -> x = x or y
+      isFruitEaten ||= arePositionsEqual(newPosition, [x, y]);
+      isFruitEaten ||= arePositionsEqual(newPosition, [x, y + 1]);
+      isFruitEaten ||= arePositionsEqual(newPosition, [x + 1, y]);
+      isFruitEaten ||= arePositionsEqual(newPosition, [x + 1, y + 1]);
+    } else {
+      isFruitEaten = arePositionsEqual(newPosition, fruit);
+    }
+
+    if (isFruitEaten) {
       isEatingAFruit = true;
       eatFruit(index);
     }
