@@ -80,6 +80,8 @@ main {
   /* background-color: green; */
   /* border-radius: 100%; */
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .fruit-0 {
@@ -88,6 +90,10 @@ main {
 
 .fruit-1 {
   background-image: url("/assets/grape.png");
+}
+
+.fruit-2 {
+  background-image: url("/assets/mango.png");
 }
 
 .timer {
