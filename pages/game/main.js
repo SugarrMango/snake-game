@@ -43,6 +43,7 @@ let isGamePaused = false;
 let difficulty;
 let gameMode;
 let timeElapsed = 0;
+let regularFruitCounter = 0;
 
 function applyTurn(cell, direction, type) {
   if (direction === "up") {
@@ -332,12 +333,22 @@ function eatFruit(index) {
   }
 
   increasePoints(difficulty);
-  regenerateFruit(index);
+
+  if (index < 2) {
+    eatRegularFruit();
+    regenerateFruit(index);
+  } else {
+    fruits[index] = null;
+  }
 }
 
 function eatRegularFruit() {
   if (gameMode === "classic") {
-    points += 1;
+    regularFruitCounter += 1;
+  }
+  if (regularFruitCounter === 5) {
+    regenerateFruit(2);
+    regularFruitCounter = 0;
   }
 }
 
