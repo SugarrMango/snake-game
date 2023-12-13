@@ -353,12 +353,13 @@ function eatFruit(index) {
     progressTimer.resetTimer();
   }
 
-  increasePoints(difficulty);
-
   if (index < 2) {
     eatRegularFruit();
     regenerateFruit(index);
+    increasePoints(difficulty);
   } else {
+    // 1s -> 10pts, 2s -> 20pts, 3s -> 30pts, 4s -> 40pts, 5s -> 50pts
+    increasePoints(difficulty * mangoTimer.getTimer() * 2);
     removeMango();
   }
 }
