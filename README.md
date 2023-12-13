@@ -12,16 +12,19 @@
 - [x] Add game rules page
 - [x] Add a leaderboard
 - [x] Add multiple fruits at once
-- [ ] Design campaign levels with walls and other stuff?
-- [x] Different game modes
-- [ ] Make the fruits different somehow for a more interesting gameplay
-- [ ] Add a carousel for the game rules page and add accompanying visuals
-- [ ] Design the leaderboard page
 - [x] Sort leaderboard records
+- [x] Different game modes
+- [x] Make the fruits different somehow for a more interesting gameplay
+- [ ] (Bug) Make the snake start with length at least 3 (head + body + tail)
+- [ ] (Bug) Sometimes you lose unpredictably
+- [ ] Make board size customisable and also add an option to make the board cyclic
+- [ ] Design campaign levels with walls and other stuff?
+- [ ] Coins can appear on the field
+- [ ] Perks: speed booster, x2 score multiplier, freeze mode (?)
 - [ ] Snake skins
 - [ ] Coins for buying skins
-- [ ] Coins can appear on the field
+- [ ] Add a carousel for the game rules page and add accompanying visuals
 
 # Homework
 
-Make a counter for how many regular fruits you have eaten in-game (strawberry or grape)
+Make the snake start with length exactly 3 at the beginning of the game. Also make sure the snake does not appear on top of some fruits.
