@@ -314,6 +314,10 @@ function lose() {
 
   statsText.textContent = `You got ${getPoints()} points in ${minutes} minutes and ${seconds} seconds`;
   loseMenuElement.style.display = "flex";
+
+  if (mangoTimer !== null) {
+    mangoTimer.stopTimer();
+  }
 }
 
 function isInsideFruit(position, index, fruit) {
