@@ -7,6 +7,7 @@ let retryButton = document.querySelector(".retry");
 let statsText = document.querySelector(".lose-modal .stats");
 
 let mangoContainerElement = document.querySelector(".mango-container");
+let progressTimerElement = document.querySelector(".timer");
 
 function setupScene() {
   // for i in range(400):
@@ -44,6 +45,7 @@ let difficulty;
 let gameMode;
 let timeElapsed = 0;
 let regularFruitCounter = 0;
+let progressTimer;
 
 function applyTurn(cell, direction, type) {
   if (direction === "up") {
@@ -127,19 +129,28 @@ function repaint() {
   }
 }
 
+function onSet(timer) {
+  let minutes = Math.floor(timer / 60).toString();
+  let seconds = (timer % 60).toString();
+  progressTimerElement.textContent = `${minutes.padStart(
+    2,
+    "0"
+  )}:${seconds.padStart(2, "0")}`;
+}
+
 function onTickSurvival() {
-  let timer = getTimer();
+  let timer = progressTimer.getTimer();
 
   if (timer === 0) {
     lose();
   } else {
-    setTimer(timer - 1);
+    progressTimer.setTimer(timer - 1);
     timeElapsed += 1;
   }
 }
 function onTickClassic() {
-  let timer = getTimer();
-  setTimer(timer + 1);
+  let timer = progressTimer.getTimer();
+  progressTimer.setTimer(timer + 1);
 }
 
 function setup() {
@@ -155,6 +166,8 @@ function setup() {
 
   resetPoints();
   repaint();
+
+  progressTimer = createTimer();
 
   let startTime, speed, onTick;
 
@@ -184,16 +197,17 @@ function setup() {
     onTick = onTickSurvival;
   }
 
-  setupTimer({
+  progressTimer.setupTimer({
     // startTime,
     startTime: startTime,
     onTick: onTick,
+    onSet: onSet,
   });
   moveInterval = setInterval(move, speed);
 
   timeElapsed = 0;
-  resetTimer();
-  startTimer();
+  progressTimer.resetTimer();
+  progressTimer.startTimer();
 
   direction = "none";
   isGameRunning = true;
@@ -249,7 +263,7 @@ function pauseGame() {
   if (isGameRunning && !isGamePaused) {
     isGamePaused = true;
     clearInterval(moveInterval);
-    stopTimer();
+    progressTimer.stopTimer();
     pauseMenuElement.style.display = "flex";
   }
 }
@@ -258,7 +272,7 @@ function resumeGame() {
   if (isGameRunning && isGamePaused) {
     isGamePaused = false;
     moveInterval = setInterval(move, 100);
-    startTimer();
+    progressTimer.startTimer();
     pauseMenuElement.style.display = "none";
   }
 }
@@ -268,9 +282,9 @@ function lose() {
   isGameRunning = false;
 
   clearInterval(moveInterval);
-  stopTimer();
+  progressTimer.stopTimer();
   // You got 5 points in 2 minutes and 10 seconds
-  const timer = gameMode === "classic" ? getTimer() : timeElapsed;
+  const timer = gameMode === "classic" ? progressTimer.getTimer() : timeElapsed;
   const minutes = Math.floor(timer / 60);
   const seconds = timer % 60;
 
@@ -329,7 +343,7 @@ function regenerateFruit(index) {
 
 function eatFruit(index) {
   if (gameMode === "survival") {
-    resetTimer();
+    progressTimer.resetTimer();
   }
 
   increasePoints(difficulty);
@@ -338,8 +352,12 @@ function eatFruit(index) {
     eatRegularFruit();
     regenerateFruit(index);
   } else {
-    fruits[index] = null;
+    removeMango();
   }
+}
+
+function removeMango() {
+  fruits[2] = null;
 }
 
 function eatRegularFruit() {
@@ -349,6 +367,7 @@ function eatRegularFruit() {
   if (regularFruitCounter === 5) {
     regenerateFruit(2);
     regularFruitCounter = 0;
+    setTimeout(removeMango, 5000);
   }
 }
 

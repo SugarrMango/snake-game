@@ -1,8 +1,3 @@
-let timer;
-let timerElement = document.querySelector(".timer");
-let timerInterval;
-let timerOptions;
-
 /*
   options: {
     startTime (60),
@@ -10,33 +5,44 @@ let timerOptions;
   }
 */
 
-function setTimer(t) {
-  timer = t;
-  let minutes = Math.floor(t / 60).toString();
-  let seconds = (t % 60).toString();
-  timerElement.textContent = `${minutes.padStart(2, "0")}:${seconds.padStart(
-    2,
-    "0"
-  )}`;
-}
+function createTimer() {
+  let timer;
+  let timerInterval;
+  let timerOptions;
 
-function setupTimer(options) {
-  timerOptions = options;
-}
+  function setTimer(t) {
+    timer = t;
+    timerOptions.onSet(t);
+  }
 
-function getTimer() {
-  return timer;
-}
+  function setupTimer(options) {
+    timerOptions = options;
+  }
 
-function resetTimer() {
-  setTimer(timerOptions.startTime);
-}
+  function getTimer() {
+    return timer;
+  }
 
-function startTimer() {
-  // 1s = 1000ms
-  timerInterval = setInterval(timerOptions.onTick, 1000);
-}
+  function resetTimer() {
+    setTimer(timerOptions.startTime);
+  }
 
-function stopTimer() {
-  clearInterval(timerInterval);
+  function startTimer() {
+    // 1s = 1000ms
+    timerInterval = setInterval(timerOptions.onTick, 1000);
+  }
+
+  function stopTimer() {
+    clearInterval(timerInterval);
+  }
+
+  return {
+    timer,
+    setTimer,
+    setupTimer,
+    getTimer,
+    resetTimer,
+    startTimer,
+    stopTimer,
+  };
 }
