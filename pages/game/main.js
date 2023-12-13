@@ -105,12 +105,19 @@ function repaint() {
   // for x in fruits:
   //   changeType(x, FRUIT_TYPE)
   for (let [index, fruit] of fruits.entries()) {
+    if (fruit === null) {
+      if (index === 2) {
+        mangoContainerElement.style.display = "none";
+      }
+      continue;
+    }
     // fruit-0 or fruit-1
     // fruit-index
 
     if (index === 2) {
       let [x, y] = fruit;
 
+      mangoContainerElement.style.display = "block";
       mangoContainerElement.style.top = `${x * 40}px`;
       mangoContainerElement.style.left = `${y * 40}px`;
     } else {
@@ -141,7 +148,7 @@ function setup() {
   snake = [generatePosition()];
   fruits = [null, null, null];
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < 2; i++) {
     regenerateFruit(i);
   }
 
@@ -328,6 +335,12 @@ function eatFruit(index) {
   regenerateFruit(index);
 }
 
+function eatRegularFruit() {
+  if (gameMode === "classic") {
+    points += 1;
+  }
+}
+
 function move() {
   if (direction === "none") {
     return;
@@ -350,6 +363,10 @@ function move() {
   */
 
   for (let [index, fruit] of fruits.entries()) {
+    if (fruit === null) {
+      continue;
+    }
+
     let isFruitEaten = isInsideFruit(newPosition, index, fruit);
 
     if (isFruitEaten) {
