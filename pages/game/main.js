@@ -7,7 +7,7 @@ let retryButton = document.querySelector(".retry");
 let statsText = document.querySelector(".lose-modal .stats");
 
 let mangoContainerElement = document.querySelector(".mango-container");
-let progressTimerElement = document.querySelector(".timer");
+let timerElement = document.querySelector(".timer");
 
 function setupScene() {
   // for i in range(400):
@@ -45,7 +45,8 @@ let difficulty;
 let gameMode;
 let timeElapsed = 0;
 let regularFruitCounter = 0;
-let progressTimer;
+let progressTimer = null;
+let mangoTimer = null;
 
 function applyTurn(cell, direction, type) {
   if (direction === "up") {
@@ -129,13 +130,19 @@ function repaint() {
   }
 }
 
-function onSet(timer) {
+function updateTimerElement(timer) {
   let minutes = Math.floor(timer / 60).toString();
   let seconds = (timer % 60).toString();
-  progressTimerElement.textContent = `${minutes.padStart(
+  timerElement.textContent = `${minutes.padStart(2, "0")}:${seconds.padStart(
     2,
     "0"
-  )}:${seconds.padStart(2, "0")}`;
+  )}`;
+}
+
+function onSet(timer) {
+  if (mangoTimer === null) {
+    updateTimerElement(timer);
+  }
 }
 
 function onTickSurvival() {
@@ -358,6 +365,10 @@ function eatFruit(index) {
 
 function removeMango() {
   fruits[2] = null;
+  if (mangoTimer !== null) {
+    mangoTimer.stopTimer();
+    mangoTimer = null;
+  }
 }
 
 function eatRegularFruit() {
@@ -367,7 +378,23 @@ function eatRegularFruit() {
   if (regularFruitCounter === 5) {
     regenerateFruit(2);
     regularFruitCounter = 0;
-    setTimeout(removeMango, 5000);
+    mangoTimer = createTimer();
+    mangoTimer.setupTimer({
+      startTime: 5,
+      onTick: () => {
+        let timer = mangoTimer.getTimer();
+        mangoTimer.setTimer(timer - 1);
+      },
+      onSet: (timer) => {
+        if (timer === 0) {
+          removeMango();
+          return;
+        }
+        updateTimerElement(timer);
+      },
+    });
+    mangoTimer.resetTimer();
+    mangoTimer.startTimer();
   }
 }
 
