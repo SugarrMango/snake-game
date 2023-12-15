@@ -164,7 +164,12 @@ function setup() {
   difficulty = Number(localStorage.getItem("difficulty"));
   gameMode = localStorage.getItem("gameMode");
 
-  snake = [generatePosition()];
+  let snakeHead = generatePosition(18);
+  let snakeBody = getNewPosition(snakeHead, "right");
+  let snakeTail = getNewPosition(snakeBody, "right");
+
+  snake = [snakeHead, snakeBody, snakeTail];
+
   fruits = [null, null, null];
 
   for (let i = 0; i < 2; i++) {

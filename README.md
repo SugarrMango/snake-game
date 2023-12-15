@@ -24,6 +24,7 @@
 - [ ] Snake skins
 - [ ] Coins for buying skins
 - [ ] Add a carousel for the game rules page and add accompanying visuals
+- [ ] Fix the snake's head showing up as a square
 
 # Homework
 
