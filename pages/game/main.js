@@ -298,6 +298,7 @@ function lose() {
   pauseMenuElement.style.display = "none";
   isGameRunning = false;
   direction = "none";
+  regularFruitCounter = 0;
 
   clearInterval(moveInterval);
   progressTimer.stopTimer();
