@@ -8,10 +8,11 @@ let statsText = document.querySelector(".lose-modal .stats");
 
 let mangoContainerElement = document.querySelector(".mango-container");
 let timerElement = document.querySelector(".timer");
+let boardSize = 20;
 
 function setupScene() {
   // for i in range(400):
-  for (let i = 0; i < 400; i += 1) {
+  for (let i = 0; i < boardSize * boardSize; i += 1) {
     let cell = document.createElement("div");
     cell.className = "cell default";
     board.prepend(cell);
@@ -63,8 +64,8 @@ function applyTurn(cell, direction, type) {
 }
 
 function repaint() {
-  for (let r = 0; r < 20; r += 1) {
-    for (let c = 0; c < 20; c += 1) {
+  for (let r = 0; r < boardSize; r += 1) {
+    for (let c = 0; c < boardSize; c += 1) {
       changeType([r, c], DEFAULT_TYPE);
     }
   }
@@ -165,7 +166,7 @@ function setup() {
   difficulty = Number(localStorage.getItem("difficulty"));
   gameMode = localStorage.getItem("gameMode");
 
-  let snakeHead = generatePosition(18);
+  let snakeHead = generatePosition(boardSize - 2);
   let snakeBody = getNewPosition(snakeHead, "right");
   let snakeTail = getNewPosition(snakeBody, "right");
 
@@ -346,13 +347,13 @@ function isInsideFruit(position, index, fruit) {
 
 function regenerateFruit(index) {
   fruits[index] = null;
-  let newPosition = generatePosition(index === 2 ? 19 : 20);
+  let newPosition = generatePosition(index === 2 ? boardSize - 1 : boardSize);
 
   while (
     snake.some((x) => isInsideFruit(x, index, newPosition)) ||
     fruits.some((x) => isInsideFruit(x, index, newPosition))
   ) {
-    newPosition = generatePosition(index === 2 ? 19 : 20);
+    newPosition = generatePosition(index === 2 ? boardSize - 1 : boardSize);
   }
 
   fruits[index] = newPosition;
@@ -417,7 +418,7 @@ function move() {
   let newPosition = getNewPosition(snake[0], direction);
   let [r, c] = newPosition;
 
-  if (r < 0 || c < 0 || r > 19 || c > 19) {
+  if (r < 0 || c < 0 || r >= boardSize || c >= boardSize) {
     lose();
     return;
   }
