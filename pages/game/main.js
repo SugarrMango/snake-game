@@ -166,6 +166,11 @@ function onTickClassic() {
 }
 
 function setup() {
+  pauseMenuElement.style.display = "none";
+  loseMenuElement.style.display = "none";
+  direction = "none";
+  regularFruitCounter = 0;
+
   difficulty = Number(localStorage.getItem("difficulty"));
   gameMode = localStorage.getItem("gameMode");
 
@@ -226,15 +231,11 @@ function setup() {
   progressTimer.resetTimer();
   progressTimer.startTimer();
 
-  direction = "none";
   isGameRunning = true;
-  pauseMenuElement.style.display = "none";
-  loseMenuElement.style.display = "none";
 }
 
 function handleKeyDown(event) {
   const key = event.key;
-  console.log("key", key);
 
   switch (key) {
     case "ArrowLeft": {
@@ -297,8 +298,6 @@ function resumeGame() {
 function lose() {
   pauseMenuElement.style.display = "none";
   isGameRunning = false;
-  direction = "none";
-  regularFruitCounter = 0;
 
   clearInterval(moveInterval);
   progressTimer.stopTimer();
