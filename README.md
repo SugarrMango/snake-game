@@ -15,7 +15,8 @@
 - [x] Sort leaderboard records
 - [x] Different game modes
 - [x] Make the fruits different somehow for a more interesting gameplay
-- [ ] (Bug) Make the snake start with length at least 3 (head + body + tail)
+- [x] Fix the snake's head showing up as a square
+- [x] (Bug) Make the snake start with length at least 3 (head + body + tail)
 - [ ] (Bug) Sometimes you lose unpredictably
 - [ ] Make board size customisable and also add an option to make the board cyclic
 - [ ] Design campaign levels with walls and other stuff?
@@ -24,7 +25,6 @@
 - [ ] Snake skins
 - [ ] Coins for buying skins
 - [ ] Add a carousel for the game rules page and add accompanying visuals
-- [ ] Fix the snake's head showing up as a square
 
 # Homework
 

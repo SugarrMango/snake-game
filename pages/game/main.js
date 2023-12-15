@@ -96,7 +96,8 @@ function repaint() {
   }
 
   // snake-head
-  applyTurn(snake[0], direction, SNAKE_HEAD_TYPE);
+  let headDirection = direction === "none" ? "left" : direction;
+  applyTurn(snake[0], headDirection, SNAKE_HEAD_TYPE);
   // snake-tail
   if (snake.length > 1) {
     let tailDirection = getDirection(
