@@ -244,7 +244,7 @@ function handleKeyDown(event) {
       break;
     }
     case "ArrowRight": {
-      if (direction !== "left") {
+      if (direction !== "left" && direction !== "none") {
         direction = "right";
       }
       break;
