@@ -8,9 +8,12 @@ let statsText = document.querySelector(".lose-modal .stats");
 
 let mangoContainerElement = document.querySelector(".mango-container");
 let timerElement = document.querySelector(".timer");
-let boardSize = 15;
+let boardSize = 10;
 
 function setupScene() {
+  board.style.width = `${boardSize * 40}px`;
+  board.style.height = `${boardSize * 40}px`;
+
   // for i in range(400):
   for (let i = 0; i < boardSize * boardSize; i += 1) {
     let cell = document.createElement("div");
