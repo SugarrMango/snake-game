@@ -8,7 +8,7 @@ let statsText = document.querySelector(".lose-modal .stats");
 
 let mangoContainerElement = document.querySelector(".mango-container");
 let timerElement = document.querySelector(".timer");
-let boardSize = 20;
+let boardSize = 15;
 
 function setupScene() {
   // for i in range(400):
@@ -294,6 +294,7 @@ function resumeGame() {
 function lose() {
   pauseMenuElement.style.display = "none";
   isGameRunning = false;
+  direction = "none";
 
   clearInterval(moveInterval);
   progressTimer.stopTimer();

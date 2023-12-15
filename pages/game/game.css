@@ -11,8 +11,8 @@ main {
 
 .board {
   position: relative;
-  width: 800px;
-  height: 800px;
+  width: 600px;
+  height: 600px;
   border: 10px solid #b39364;
   background-image: url("/assets/flower.png");
   /* background-color: #afd1a3;*/
