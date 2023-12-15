@@ -9,13 +9,27 @@ function generatePosition(limit = boardSize) {
 }
 
 function getDirection(curCell, nextCell) {
-  if (nextCell[1] === curCell[1] + 1) {
+  if (!boardWrap) {
+    if (nextCell[1] === curCell[1] + 1) {
+      return "right";
+    } else if (nextCell[0] === curCell[0] - 1) {
+      return "up";
+    } else if (nextCell[1] === curCell[1] - 1) {
+      return "left";
+    } else if (nextCell[0] === curCell[0] + 1) {
+      return "down";
+    } else {
+      return "none";
+    }
+  }
+
+  if (nextCell[1] === (curCell[1] + 1 + boardSize) % boardSize) {
     return "right";
-  } else if (nextCell[0] === curCell[0] - 1) {
+  } else if (nextCell[0] === (curCell[0] - 1 + boardSize) % boardSize) {
     return "up";
-  } else if (nextCell[1] === curCell[1] - 1) {
+  } else if (nextCell[1] === (curCell[1] - 1 + boardSize) % boardSize) {
     return "left";
-  } else if (nextCell[0] === curCell[0] + 1) {
+  } else if (nextCell[0] === (curCell[0] + 1 + boardSize) % boardSize) {
     return "down";
   } else {
     return "none";

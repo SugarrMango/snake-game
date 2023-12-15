@@ -17,8 +17,8 @@
 - [x] Make the fruits different somehow for a more interesting gameplay
 - [x] Fix the snake's head showing up as a square
 - [x] (Bug) Make the snake start with length at least 3 (head + body + tail)
-- [ ] (Bug) Sometimes you lose unpredictably
-- [ ] Make board size customisable and also add an option to make the board cyclic
+- [x] (Bug) Sometimes you lose unpredictably
+- [x] Make board size customisable and also add an option to make the board cyclic
 - [ ] Design campaign levels with walls and other stuff?
 - [ ] Coins can appear on the field
 - [ ] Perks: speed booster, x2 score multiplier, freeze mode (?)

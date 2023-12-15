@@ -9,6 +9,7 @@ let statsText = document.querySelector(".lose-modal .stats");
 let mangoContainerElement = document.querySelector(".mango-container");
 let timerElement = document.querySelector(".timer");
 let boardSize = 10;
+let boardWrap = true;
 
 function setupScene() {
   board.style.width = `${boardSize * 40}px`;
@@ -419,13 +420,15 @@ function move() {
     return;
   }
 
-  let newPosition = getNewPosition(snake[0], direction);
-  let [r, c] = newPosition;
+  let [r, c] = getNewPosition(snake[0], direction);
 
-  if (r < 0 || c < 0 || r >= boardSize || c >= boardSize) {
+  if (!boardWrap && (r < 0 || c < 0 || r >= boardSize || c >= boardSize)) {
     lose();
     return;
   }
+
+  r = (r + boardSize) % boardSize;
+  c = (c + boardSize) % boardSize;
 
   let isEatingAFruit = false;
 
@@ -440,7 +443,7 @@ function move() {
       continue;
     }
 
-    let isFruitEaten = isInsideFruit(newPosition, index, fruit);
+    let isFruitEaten = isInsideFruit([r, c], index, fruit);
 
     if (isFruitEaten) {
       isEatingAFruit = true;
@@ -454,14 +457,14 @@ function move() {
     snake.pop();
   }
 
-  if (snake.some((x) => arePositionsEqual(x, newPosition))) {
+  if (snake.some((x) => arePositionsEqual(x, [r, c]))) {
     lose();
     return;
   }
 
   // Before: snake = [ [3, 4], [4, 5], [2, 6] ]
-  // After: snake = [ newPosition, [3, 4], [4, 5], [2, 6] ]
-  snake.unshift(newPosition);
+  // After: snake = [ [r, c], [3, 4], [4, 5], [2, 6] ]
+  snake.unshift([r, c]);
   repaint();
 }
 
