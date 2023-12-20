@@ -8,18 +8,28 @@ let statsText = document.querySelector(".lose-modal .stats");
 
 let mangoContainerElement = document.querySelector(".mango-container");
 let timerElement = document.querySelector(".timer");
-let boardSize = 10;
+let boardSize;
 let boardWrap = true;
+let cellSize;
+let cellClass;
 
 function setupScene() {
   boardSize = Number(localStorage.getItem("boardSize"));
-  board.style.width = `${boardSize * 40}px`;
-  board.style.height = `${boardSize * 40}px`;
+  if (boardSize >= 20) {
+    cellSize = 30;
+    cellClass = "cell cell-small";
+  } else {
+    cellSize = 40;
+    cellClass = "cell cell-big";
+  }
+
+  board.style.width = `${boardSize * cellSize}px`;
+  board.style.height = `${boardSize * cellSize}px`;
 
   // for i in range(400):
   for (let i = 0; i < boardSize * boardSize; i += 1) {
     let cell = document.createElement("div");
-    cell.className = "cell default";
+    cell.className = `${cellClass} default`;
     board.prepend(cell);
   }
 
@@ -33,7 +43,7 @@ function changeType(position, ...types) {
   if (!cell) {
     return;
   }
-  cell.className = `cell ${types.join(" ")}`;
+  cell.className = `${cellClass} ${types.join(" ")}`;
 }
 
 const FRUIT_TYPE = "fruit";
@@ -129,8 +139,10 @@ function repaint() {
       let [x, y] = fruit;
 
       mangoContainerElement.style.display = "block";
-      mangoContainerElement.style.top = `${x * 40}px`;
-      mangoContainerElement.style.left = `${y * 40}px`;
+      mangoContainerElement.style.top = `${x * cellSize}px`;
+      mangoContainerElement.style.left = `${y * cellSize}px`;
+      mangoContainerElement.style.width = `${2 * cellSize}px`;
+      mangoContainerElement.style.height = `${2 * cellSize}px`;
     } else {
       changeType(fruit, FRUIT_TYPE, `${FRUIT_TYPE}-${index}`);
     }

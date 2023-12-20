@@ -25,9 +25,17 @@ main {
 }
 
 .cell {
+  flex-shrink: 0;
+}
+
+.cell-small {
+  width: 30px;
+  height: 30px;
+}
+
+.cell-big {
   width: 40px;
   height: 40px;
-  flex-shrink: 0;
 }
 
 .default {
@@ -97,8 +105,6 @@ main {
 
 .mango-container {
   position: absolute;
-  width: 80px;
-  height: 80px;
 }
 
 .timer {

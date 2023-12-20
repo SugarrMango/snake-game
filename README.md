@@ -19,6 +19,7 @@
 - [x] (Bug) Make the snake start with length at least 3 (head + body + tail)
 - [x] (Bug) Snake should not move right at the start of the game
 - [x] Make board size customisable and also add an option to make the board cyclic
+- [x] When the board size is getting too big, reduce the cell size instead
 - [ ] (Bug) When you click on two move buttons in the same frame, you could lose on the spot
 - [ ] On the difficulty selection screen, add toggles for board size and board wrap
 - [ ] Design campaign levels with walls and other stuff?
