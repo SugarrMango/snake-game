@@ -31,7 +31,7 @@
 
 # How String.split() works
 
-![String.split()](image.png)
+![String.split()](String.split.png)
 
 # Homework
 
