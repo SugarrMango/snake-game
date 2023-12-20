@@ -35,4 +35,4 @@
 
 # Homework
 
-On the difficulty selection screen, add toggles for board size and board wrap. Try to also implement the JS logic, but if it doesn't work out you can just do the visual aspect of it.
+On the difficulty selection screen, add a toggle for board wrap. Try to also implement the JS logic, but if it doesn't work out you can just do the visual aspect of it.
