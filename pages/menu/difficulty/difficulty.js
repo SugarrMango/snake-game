@@ -10,6 +10,10 @@ let tabClassic = document.querySelector(".tab-classic");
 let tabSurvival = document.querySelector(".tab-survival");
 let contentElement = document.querySelector(".content");
 
+let boardSizeSelectElement = document.querySelector("#board-size-select");
+
+let boardSize = 20;
+
 const GAMEMODE = {
   Classic: "classic",
   Survival: "survival",
@@ -127,20 +131,12 @@ difficultyInputElement.addEventListener("change", handleInputChange);
 tabClassic.addEventListener("click", () => setGameMode(GAMEMODE.Classic));
 tabSurvival.addEventListener("click", () => setGameMode(GAMEMODE.Survival));
 
-/*
-Explaining the different ways to declare functions in JavaScript
-
-function addTwoNumbers(a, b) {
-  return a + b;
+function handleBoardSizeChange(event) {
+  let newSize = event.target.value;
+  let dimensions = newSize.split("x");
+  boardSize = Number(dimensions[1]);
+  localStorage.setItem("boardSize", boardSize);
 }
 
-const someNumber = 123;
-const addTwoNumbers = (a, b) => a + b; // implicit return
-const addTwoNumbers = function (a, b) {
-  return a + b;
-};
-const addTwoNumbers = (a, b) => {
-  // full arrow function
-  return a + b;
-};
-*/
+boardSizeSelectElement.addEventListener("change", handleBoardSizeChange);
+localStorage.setItem("boardSize", boardSize);

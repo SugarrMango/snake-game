@@ -12,6 +12,7 @@ let boardSize = 10;
 let boardWrap = true;
 
 function setupScene() {
+  boardSize = Number(localStorage.getItem("boardSize"));
   board.style.width = `${boardSize * 40}px`;
   board.style.height = `${boardSize * 40}px`;
 

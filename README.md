@@ -28,6 +28,10 @@
 - [ ] Coins for buying skins
 - [ ] Add a carousel for the game rules page and add accompanying visuals
 
+# How String.split() works
+
+![String.split()](image.png)
+
 # Homework
 
 On the difficulty selection screen, add toggles for board size and board wrap. Try to also implement the JS logic, but if it doesn't work out you can just do the visual aspect of it.
