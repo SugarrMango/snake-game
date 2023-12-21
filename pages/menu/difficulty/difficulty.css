@@ -151,3 +151,12 @@ select option {
   color: #e8e8e8;
   background-color: #45372b;
 }
+/*
+.wrap {
+  color: #45372b;
+  -webkit-text-stroke-color: #836945;
+  -webkit-text-stroke-width: 2px;
+  font-size: 30px;
+  display: inline-block;
+}
+*/
