@@ -17,21 +17,27 @@
         <div class="tab tab-survival">Survival</div>
       </header>
       <div class="content">
-        <div>
-          <label for="board-size-select"> Select Board Size </label>
-          <select id="board-size-select" name="board-size-select">
-            <option>12x12</option>
-            <option>16x16</option>
-            <option selected="selected">20x20</option>
-            <option>24x24</option>
-          </select>
+        <div class="row">
+          <div>
+            <label for="board-size-select"> Select Board Size </label>
+            <select id="board-size-select" name="board-size-select">
+              <option>12x12</option>
+              <option>16x16</option>
+              <option selected="selected">20x20</option>
+              <option>24x24</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="wrap" for="board-wrap-checkbox">Board wrap </label>
+            <input
+              id="board-wrap-checkbox"
+              name="board-wrap-checkbox"
+              type="checkbox"
+              checked="checked"
+            />
+          </div>
         </div>
-
-        <label class="wrap"
-          >Board wrap
-          <input type="checkbox" checked="checked" />
-        </label>
-
         <input
           type="range"
           id="difficulty"

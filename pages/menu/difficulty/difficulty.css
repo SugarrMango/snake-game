@@ -133,9 +133,9 @@ select {
   font-size: 18px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 500px;
+  width: 300px;
   box-sizing: border-box;
-  height: 60px;
+  height: 48px;
   color: #e8e8e8;
   background-color: #967950;
   border: 3px solid #45372b;
@@ -151,12 +151,43 @@ select option {
   color: #e8e8e8;
   background-color: #45372b;
 }
-/*
-.wrap {
-  color: #45372b;
-  -webkit-text-stroke-color: #836945;
-  -webkit-text-stroke-width: 2px;
-  font-size: 30px;
-  display: inline-block;
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
-*/
+
+#board-wrap-checkbox {
+  width: 48px;
+  margin: 0px;
+  height: 48px;
+  visibility: hidden;
+}
+
+#board-wrap-checkbox::after {
+  content: " ";
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  background-color: #967950;
+  color: #e8e8e8;
+
+  width: 48px;
+  height: 48px;
+
+  font-size: 24px;
+  font-weight: bold;
+
+  visibility: visible;
+  border: 3px solid #45372b;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#board-wrap-checkbox:checked::after {
+  content: "\2714";
+}
