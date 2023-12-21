@@ -11,8 +11,10 @@ let tabSurvival = document.querySelector(".tab-survival");
 let contentElement = document.querySelector(".content");
 
 let boardSizeSelectElement = document.querySelector("#board-size-select");
+let boardWrapCheckboxElement = document.querySelector("#board-wrap-checkbox");
 
 let boardSize = 20;
+let boardWrap = false;
 
 const GAMEMODE = {
   Classic: "classic",
@@ -138,5 +140,13 @@ function handleBoardSizeChange(event) {
   localStorage.setItem("boardSize", boardSize);
 }
 
+function handleBoardWrapChange(event) {
+  let newValue = event.target.checked;
+  boardWrap = newValue;
+  localStorage.setItem("boardWrap", boardWrap);
+}
+
 boardSizeSelectElement.addEventListener("change", handleBoardSizeChange);
+boardWrapCheckboxElement.addEventListener("change", handleBoardWrapChange);
 localStorage.setItem("boardSize", boardSize);
+localStorage.setItem("boardWrap", boardWrap);

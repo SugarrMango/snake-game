@@ -9,12 +9,13 @@ let statsText = document.querySelector(".lose-modal .stats");
 let mangoContainerElement = document.querySelector(".mango-container");
 let timerElement = document.querySelector(".timer");
 let boardSize;
-let boardWrap = true;
+let boardWrap;
 let cellSize;
 let cellClass;
 
 function setupScene() {
   boardSize = Number(localStorage.getItem("boardSize"));
+  boardWrap = localStorage.getItem("boardWrap") === "true";
   if (boardSize >= 20) {
     cellSize = 30;
     cellClass = "cell cell-small";
