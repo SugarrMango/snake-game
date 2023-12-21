@@ -58,6 +58,7 @@ let direction = "none";
 let moveInterval;
 let isGameRunning = false;
 let isGamePaused = false;
+let didDirectionChange = false;
 let difficulty;
 let gameMode;
 let timeElapsed = 0;
@@ -249,31 +250,38 @@ function setup() {
   isGameRunning = true;
 }
 
+function changeDirection(newDirection) {
+  if (!didDirectionChange) {
+    direction = newDirection;
+    didDirectionChange = true;
+  }
+}
+
 function handleKeyDown(event) {
   const key = event.key;
 
   switch (key) {
     case "ArrowLeft": {
       if (direction !== "right") {
-        direction = "left";
+        changeDirection("left");
       }
       break;
     }
     case "ArrowRight": {
       if (direction !== "left" && direction !== "none") {
-        direction = "right";
+        changeDirection("right");
       }
       break;
     }
     case "ArrowUp": {
       if (direction !== "down") {
-        direction = "up";
+        changeDirection("up");
       }
       break;
     }
     case "ArrowDown": {
       if (direction !== "up") {
-        direction = "down";
+        changeDirection("down");
       }
       break;
     }
@@ -430,6 +438,8 @@ function eatRegularFruit() {
 }
 
 function move() {
+  didDirectionChange = false;
+
   if (direction === "none") {
     return;
   }

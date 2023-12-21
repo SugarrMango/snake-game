@@ -20,8 +20,8 @@
 - [x] (Bug) Snake should not move right at the start of the game
 - [x] Make board size customisable and also add an option to make the board cyclic
 - [x] When the board size is getting too big, reduce the cell size instead
-- [ ] (Bug) When you click on two move buttons in the same frame, you could lose on the spot
-- [ ] On the difficulty selection screen, add toggles for board size and board wrap
+- [x] (Bug) When you click on two move buttons in the same frame, you could lose on the spot
+- [x] On the difficulty selection screen, add toggles for board size and board wrap
 - [ ] Design campaign levels with walls and other stuff?
 - [ ] Coins can appear on the field
 - [ ] Perks: speed booster, x2 score multiplier, freeze mode (?)
