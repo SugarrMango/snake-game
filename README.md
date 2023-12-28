@@ -22,6 +22,7 @@
 - [x] When the board size is getting too big, reduce the cell size instead
 - [x] (Bug) When you click on two move buttons in the same frame, you could lose on the spot
 - [x] On the difficulty selection screen, add toggles for board size and board wrap
+- [x] Consider a new game interface
 - [ ] (Bug) Stop the mango timer when the game is paused
 - [ ] Coins can appear on the field
 - [ ] Perks: speed booster, x2 score multiplier, freeze mode (?)
@@ -30,19 +31,14 @@
 - [ ] Add a carousel for the game rules page and add accompanying visuals
 - [ ] Think about updating the leaderboard to show the board size/board wrap/difficulty values (consider an accordion)
 - [ ] Consider adding music for a snake game
-- [ ] Consider a new game interface
 - [ ] Add a "About" section or put links to reach out
 - [ ] Design campaign levels with walls and other stuff?
 - [ ] Consider migration to Vite vanilla template
 
 # Homework
 
-Try to implement the new game interface. Doesn't have to be perfect, but it is nice to get started somewhere.
+Take the audio code and put it into a separate JS file. And load that JS file in all menu-related pages.
 
 # How String.split() works
 
 ![String.split()](String.split.png)
-
-# Game interface idea
-
-![Interface](interface.png)
