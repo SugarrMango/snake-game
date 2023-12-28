@@ -152,13 +152,13 @@ function repaint() {
   }
 }
 
-function updateTimerElement(timer) {
-  let minutes = Math.floor(timer / 60).toString();
-  let seconds = (timer % 60).toString();
-  timerElement.textContent = `${minutes.padStart(2, "0")}:${seconds.padStart(
-    2,
-    "0"
-  )}`;
+function updateTimerElement(timer, color = "") {
+  let minutes = Math.floor(timer / 60)
+    .toString()
+    .padStart(2, "0");
+  let seconds = (timer % 60).toString().padStart(2, "0");
+  timerElement.style.color = color;
+  timerElement.textContent = `${minutes}:${seconds}`;
 }
 
 function onSet(timer) {
@@ -430,7 +430,7 @@ function eatRegularFruit() {
           removeMango();
           return;
         }
-        updateTimerElement(timer);
+        updateTimerElement(timer, "#871212");
       },
     });
     mangoTimer.resetTimer();
