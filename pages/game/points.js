@@ -5,12 +5,16 @@ function getPoints() {
   return points;
 }
 
+function displayPoints() {
+  pointsElement.textContent = `${points} points`;
+}
+
 function resetPoints() {
   points = 0;
-  pointsElement.textContent = points;
+  displayPoints();
 }
 
 function increasePoints(x) {
   points += x;
-  pointsElement.textContent = points;
+  displayPoints();
 }
