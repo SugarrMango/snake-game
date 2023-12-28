@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="menu.css" />
   </head>
   <body>
+    <audio id="audio" src="/assets/sounds/Menu.mp3"></audio>
     <header>
       <h1>Snake game</h1>
     </header>
@@ -21,6 +22,18 @@
       const quitButton = document.querySelector(".quit");
       quitButton.addEventListener("click", () => {
         window.close(``, `_parent`, ``);
+      });
+
+      let audio = document.querySelector("#audio");
+      audio.currentTime = localStorage.getItem("audioProgress") ?? 0;
+      audio.volume = 0.1;
+      // audio.loop = true;
+      audio.play();
+
+      window.addEventListener("beforeunload", function () {
+        const audioProgress = audio.currentTime;
+        console.log(audioProgress);
+        localStorage.setItem("audioProgress", audioProgress);
       });
     </script>
   </body>
