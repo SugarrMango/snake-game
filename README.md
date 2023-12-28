@@ -22,6 +22,7 @@
 - [x] When the board size is getting too big, reduce the cell size instead
 - [x] (Bug) When you click on two move buttons in the same frame, you could lose on the spot
 - [x] On the difficulty selection screen, add toggles for board size and board wrap
+- [ ] (Bug) Stop the mango timer when the game is paused
 - [ ] Coins can appear on the field
 - [ ] Perks: speed booster, x2 score multiplier, freeze mode (?)
 - [ ] Snake skins
