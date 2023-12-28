@@ -14,9 +14,9 @@ main {
   border: 10px solid #45372b;
   border-bottom-width: 0;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  padding: 0px 20px;
 
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
