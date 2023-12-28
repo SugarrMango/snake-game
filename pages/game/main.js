@@ -4,7 +4,7 @@ let resumeButton = document.querySelector(".resume");
 
 let loseMenuElement = document.querySelector(".lose-modal");
 let retryButton = document.querySelector(".retry");
-let statsText = document.querySelector(".lose-modal .stats");
+let statsText = document.querySelector(".stats-inline");
 
 let mangoContainerElement = document.querySelector(".mango-container");
 let timerElement = document.querySelector(".timer");
