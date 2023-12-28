@@ -11,18 +11,17 @@ let timerElement = document.querySelector(".timer");
 let boardSize;
 let boardWrap;
 let cellSize;
-let cellClass;
 
 function setupScene() {
   boardSize = Number(localStorage.getItem("boardSize"));
   boardWrap = localStorage.getItem("boardWrap") === "true";
-  if (boardSize >= 20) {
-    cellSize = 30;
-    cellClass = "cell cell-small";
-  } else {
-    cellSize = 40;
-    cellClass = "cell cell-big";
-  }
+
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  cellSize = Math.floor(
+    (Math.min(screenHeight, screenWidth) - 200) / boardSize
+  );
 
   board.style.width = `${boardSize * cellSize}px`;
   board.style.height = `${boardSize * cellSize}px`;
@@ -30,7 +29,9 @@ function setupScene() {
   // for i in range(400):
   for (let i = 0; i < boardSize * boardSize; i += 1) {
     let cell = document.createElement("div");
-    cell.className = `${cellClass} default`;
+    cell.className = `cell default`;
+    cell.style.width = `${cellSize}px`;
+    cell.style.height = `${cellSize}px`;
     board.prepend(cell);
   }
 
@@ -44,7 +45,7 @@ function changeType(position, ...types) {
   if (!cell) {
     return;
   }
-  cell.className = `${cellClass} ${types.join(" ")}`;
+  cell.className = `cell ${types.join(" ")}`;
 }
 
 const FRUIT_TYPE = "fruit";
