@@ -24,6 +24,7 @@
 - [x] On the difficulty selection screen, add toggles for board size and board wrap
 - [x] Consider a new game interface
 - [ ] Create a mute/unmute button for the sound
+- [ ] (Bug) Take a look at the layout in leaderboard page
 - [ ] (Bug) Audio doesn't start without user interaction first
 - [ ] (Bug) Stop the mango timer when the game is paused
 - [ ] Coins can appear on the field
@@ -39,7 +40,7 @@
 
 # Homework
 
-Take the audio code and put it into a separate JS file. And load that JS file in all menu-related pages.
+Make the mute/unmute button visually toggle when you click on it. Also consider changing the color based on state.
 
 # How String.split() works
 
