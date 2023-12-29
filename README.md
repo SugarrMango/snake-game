@@ -23,6 +23,8 @@
 - [x] (Bug) When you click on two move buttons in the same frame, you could lose on the spot
 - [x] On the difficulty selection screen, add toggles for board size and board wrap
 - [x] Consider a new game interface
+- [ ] Create a mute/unmute button for the sound
+- [ ] (Bug) Audio doesn't start without user interaction first
 - [ ] (Bug) Stop the mango timer when the game is paused
 - [ ] Coins can appear on the field
 - [ ] Perks: speed booster, x2 score multiplier, freeze mode (?)
