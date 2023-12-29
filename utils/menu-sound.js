@@ -1,8 +1,12 @@
-let audio = document.querySelector("#audio");
+let audio = document.createElement("audio");
+// src="/assets/sounds/Menu.mp3"
+audio.src = "/assets/sounds/Menu.mp3";
+audio.muted = true;
+audio.autoplay = true;
+audio.loop = true;
+
 audio.currentTime = localStorage.getItem("audioProgress") ?? 0;
 audio.volume = 0.1;
-// audio.loop = true;
-audio.play();
 
 window.addEventListener("beforeunload", function () {
   const audioProgress = audio.currentTime;
@@ -31,7 +35,30 @@ muteButtonElement.style.color = "#45372b";
 
 muteButtonElement.style.cursor = "pointer";
 
-// &#9654;
-muteButtonElement.textContent = "\u25B6";
+let div = document.createElement("div");
+div.style.position = "relative";
+let play = document.createElement("span");
+play.textContent = "\u25B6";
+let mute = document.createElement("span");
+mute.textContent = "/";
+mute.style.position = "absolute";
+mute.style.fontSize = "40px";
+mute.style.left = "-3px";
+mute.style.top = "-11px";
+mute.style.transform = "rotate(15deg)";
+
+div.append(play, mute);
+muteButtonElement.append(div);
 
 document.body.appendChild(muteButtonElement);
+document.body.appendChild(audio);
+
+function handleClick() {
+  if (audio.muted === true) {
+    audio.muted = false;
+  } else {
+    audio.muted = true;
+  }
+}
+
+muteButtonElement.addEventListener("click", handleClick);
