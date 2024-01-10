@@ -287,7 +287,6 @@ function handleKeyDown(event) {
       break;
     }
     case "Escape": {
-      console.log("here");
       if (isGamePaused) {
         resumeGame();
       } else {
