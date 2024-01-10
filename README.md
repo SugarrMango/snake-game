@@ -27,6 +27,7 @@
 - [ ] (Bug) Take a look at the layout in leaderboard page
 - [ ] (Bug) Audio doesn't start without user interaction first
 - [ ] (Bug) Stop the mango timer when the game is paused
+- [ ] (Bug) Audio stops working after some time
 - [ ] Coins can appear on the field
 - [ ] Perks: speed booster, x2 score multiplier, freeze mode (?)
 - [ ] Snake skins

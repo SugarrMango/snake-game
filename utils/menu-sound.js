@@ -56,8 +56,12 @@ document.body.appendChild(audio);
 function handleClick() {
   if (audio.muted === true) {
     audio.muted = false;
+    mute.style.display = "none";
+    muteButtonElement.style.color = "#45372b";
   } else {
     audio.muted = true;
+    mute.style.display = "block";
+    muteButtonElement.style.color = "rgb(135, 18, 18)";
   }
 }
 
