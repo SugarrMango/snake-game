@@ -38,7 +38,7 @@ main {
 .board {
   position: relative;
   border: 10px solid #45372b;
-  background-image: url("/assets/flower.png");
+  background-image: url("../../assets/flower.png");
   /* background-color: #afd1a3;*/
   /* border-width: 4px;
     border-style: solid;
@@ -75,7 +75,7 @@ main {
 
 .snake-body {
   background-color: #75685b;
-  background-image: url("/assets/white-dot.png");
+  background-image: url("../../assets/white-dot.png");
   background-size: 20px 20px;
   background-repeat: no-repeat;
   background-position: center;
@@ -109,15 +109,15 @@ main {
 }
 
 .fruit-0 {
-  background-image: url("/assets/strawberry.png");
+  background-image: url("../../assets/strawberry.png");
 }
 
 .fruit-1 {
-  background-image: url("/assets/grape.png");
+  background-image: url("../../assets/grape.png");
 }
 
 .fruit-2 {
-  background-image: url("/assets/mango.png");
+  background-image: url("../../assets/mango.png");
 }
 
 .mango-container {

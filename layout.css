@@ -11,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-image: url("assets/cloud2.png");
+  background-image: url("./assets/cloud2.png");
   background-size: cover;
   box-sizing: border-box;
   position: relative;
