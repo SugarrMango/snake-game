@@ -1,6 +1,6 @@
 let audio = document.createElement("audio");
 // src="/assets/sounds/Menu.mp3"
-audio.src = "/assets/sounds/Menu.mp3";
+audio.src = "/snake-game/assets/sounds/Menu.mp3";
 audio.muted = true;
 audio.autoplay = true;
 audio.loop = true;
