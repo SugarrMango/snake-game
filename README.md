@@ -41,7 +41,7 @@
 
 # Homework
 
-Make the mute/unmute button visually toggle when you click on it. Also consider changing the color based on state.
+- Figure out how to use `mime` to remove all the if statements we currently have
 
 # How String.split() works
 
