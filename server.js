@@ -22,19 +22,16 @@ function handleRequest(req, res) {
   // url: -----------.html, ------------.css
   // mime.getType('html') -> 'text/html'
 
-  if (url.endsWith(".html")) {
-    res.setHeader("Content-Type", "text/html");
-  } else if (url.endsWith(".css")) {
-    res.setHeader("Content-Type", "text/css");
-  } else if (url.endsWith(".js")) {
-    res.setHeader("Content-Type", "text/javascript");
-  } else if (url.endsWith(".mp3")) {
-    res.setHeader("Content-Type", "media/mp3");
-  } else if (url.endsWith(".png")) {
-    res.setHeader("Content-Type", "image/png");
-  } else if (url.endsWith(".jpg")) {
-    res.setHeader("Content-Type", "image/jpeg");
-  } else {
+  // You have a string called 'url', you need to find a position of a '.' inside
+  // url.
+
+  // /pages/main.page/sub.page/index.html
+
+  const dotPosition = url.lastIndexOf(".");
+  const fileExtension = url.substring(dotPosition + 1);
+  const fileType = mime.getType(fileExtension);
+
+  if (fileType === null) {
     if (url.endsWith("/")) {
       url = url.slice(0, -1);
     }
@@ -44,6 +41,8 @@ function handleRequest(req, res) {
     res.end();
     return;
   }
+
+  res.setHeader("Content-Type", fileType);
 
   try {
     const file = fs.readFileSync("." + url);
